@@ -1,5 +1,5 @@
 {
-  "name": "phaser-coffee-boilerplate",
+  "name": "sm-dash",
   "scripts": {
     "start": "npm install && bower install && grunt"
   },

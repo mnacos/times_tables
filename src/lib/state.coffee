@@ -6,8 +6,8 @@ class State
 
   preload: ->
     # Preload Stage
-    @game.stage = $.extend @game.stage, config.stage
-    
+    extend {}, @game.stage, config.stage
+
     # Preload all images
     @game.load.image imageName, path for imageName, path of config.images
 
@@ -20,7 +20,7 @@ class State
 
     @circle1.anchor.setTo 0.5, 0.5
     @circle2.anchor.setTo 0.5, 0.5
-    
+
     @circle1.tint = 0xFF20A0
     @circle2.tint = 0x256CFF
 
@@ -30,7 +30,7 @@ class State
 
     @circles.x = @game.width/2
     @circles.y = @game.height/2
-    
+
     # Circles
     @blocks = @game.add.group()
     @blocks.createMultiple 5, 'block'
@@ -43,7 +43,7 @@ class State
 
     @score = -2
     style = font: '72px Arial', fill:'#ffffff'
-    
+
     @scoreLabel = @game.add.text @game.width/2, @game.height/2, '0', style
     @scoreLabel.anchor.setTo 0.5, 0.5
 

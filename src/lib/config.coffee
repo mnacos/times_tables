@@ -8,4 +8,3 @@ module.exports =
   images:
     circle: 'assets/img/circle.png'
     block: 'assets/img/block.png'
-
