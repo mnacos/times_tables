@@ -1,5 +1,12 @@
 module.exports = (grunt)->
 
+  corsMiddleware = (req, res, next) ->
+    console.log 'cors'
+    res.setHeader 'Access-Control-Allow-Origin', '*'
+    res.setHeader 'Access-Control-Allow-Methods', '*'
+    res.setHeader 'Access-Control-Allow-Headers', 'Content-Type'
+    next()
+
   require('load-grunt-tasks') grunt
 
   grunt.initConfig
@@ -14,6 +21,11 @@ module.exports = (grunt)->
     uglify:
       dist:
         files: 'build/main.min.js': 'build/main.js'
+
+    livereload:
+      options:
+        open: true,
+        middleware: [corsMiddleware]
 
     watch:
       coffee:
