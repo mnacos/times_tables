@@ -30,7 +30,23 @@ module.exports = (grunt)->
           open: yes
           port: 9001
 
+    coffee:
+      glob_to_multiple:
+        expand: true
+        flatten: true
+        cwd: 'spec/',
+        src: ['**/*spec.coffee']
+        dest: 'build/spec/'
+        ext: '.js'
+
+    jasmine:
+      specs : 'build/spec/**/*spec.js'
+
     clean: dist: files: 'build'
 
+  grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-contrib-jasmine'
   grunt.registerTask 'build', ['clean', 'browserify', 'uglify']
+  grunt.registerTask 'test', ['build', 'coffee', 'jasmine']
   grunt.registerTask 'default', ['build', 'connect', 'watch']
+
