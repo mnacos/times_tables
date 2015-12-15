@@ -5,7 +5,9 @@ module.exports = (grunt)->
   grunt.initConfig
     browserify:
       dist:
-        files: 'build/main.js': 'src/main.coffee'
+        files:
+          'build/main.js': 'src/main.coffee'
+          'build/spec/jasmine_spec.js': 'spec/jasmine_spec.coffee'
         options:
           transform: ['coffeeify']
 
@@ -19,7 +21,8 @@ module.exports = (grunt)->
           'src/**/*.coffee',
           'src/**/*.js',
           'assets/**/*.css',
-          'assets/**/*.png']
+          'assets/**/*.png'
+        ]
         tasks: ['build']
         options:
           livereload: 1337
@@ -30,23 +33,17 @@ module.exports = (grunt)->
           open: yes
           port: 9001
 
-    coffee:
-      glob_to_multiple:
-        expand: true
-        flatten: true
-        cwd: 'spec/',
-        src: ['**/*spec.coffee']
-        dest: 'build/spec/'
-        ext: '.js'
-
     jasmine:
-      specs : 'build/spec/**/*spec.js'
+      specs: 'build/spec/**/*spec.js'
+      options:
+        keepRunner: true
 
-    clean: dist: files: 'build'
+    clean:
+      dist:
+        files: 'build'
 
-  grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-jasmine'
   grunt.registerTask 'build', ['clean', 'browserify', 'uglify']
-  grunt.registerTask 'test', ['build', 'coffee', 'jasmine']
+  grunt.registerTask 'test', ['build', 'jasmine']
   grunt.registerTask 'default', ['build', 'connect', 'watch']
 
