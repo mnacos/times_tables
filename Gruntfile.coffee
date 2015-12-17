@@ -46,9 +46,11 @@ module.exports = (grunt)->
           port: 9001
 
     jasmine:
-      specs: 'build/spec/**/*spec.js'
+      all: 'build/spec/**/*spec.js'
       options:
         keepRunner: true
+        vendor: 'node_modules/jasmine-ajax/lib/mock-ajax.js'
+        helpers : 'spec/helpers/ajax_responses.js'
 
     clean:
       dist:
