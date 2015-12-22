@@ -15,6 +15,7 @@ module.exports = (grunt)->
         files:
           'build/main.js': 'src/main.coffee'
           'build/spec/jasmine_spec.js': 'spec/jasmine_spec.coffee'
+          'build/spec/inputPad_spec.js': 'spec/inputPad_spec.coffee'
         options:
           transform: ['coffeeify']
 
@@ -50,7 +51,8 @@ module.exports = (grunt)->
       options:
         keepRunner: true
         vendor: 'node_modules/jasmine-ajax/lib/mock-ajax.js'
-        helpers : 'spec/helpers/ajax_responses.js'
+        helpers :
+          'spec/helpers/ajax_responses.js'
 
     clean:
       dist:
