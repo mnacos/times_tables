@@ -9,7 +9,7 @@ class State
     @game.load.spritesheet 'keypad', 'assets/img/keypad.png', 96, 114, 27
 
   create: ->
-    @game.stage.backgroundColor = '#ffff00'
+    @game.stage.backgroundColor = '#f0f0f0'
     @inputPad = new InputPad(this, 100, 100)
     @inputPad.assignAll (button) -> console.log button.value()
 
