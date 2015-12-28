@@ -1,21 +1,31 @@
 class InputPadKey extends Phaser.Sprite
 
-  constructor: (game, x, y, number, pressed) ->
-    target = if pressed
-      if number == 0
+  constructor: (game, x, y, number) ->
+    @number = number
+    super game, x, y, 'keypad', this.find_frame()
+    this.assign (myself) ->
+      myself.frame = myself.find_frame(true)
+      myself.game.time.events.add 200, ->
+        myself.frame = myself.find_frame()
+      , myself
+
+  find_frame: (pressed=false) ->
+    if pressed
+      if @number == 0
         24
       else
-        number + 8
+        @number + 8
     else
-      if number == 0
+      if @number == 0
         21
       else
-        number - 1
-    super game, x, y, 'keypad', target
+        @number - 1
 
   assign: (callback) ->
     this.inputEnabled = true
     this.events.onInputDown.add callback
+
+  value: -> @number
 
 class InputPad extends Phaser.Group
 

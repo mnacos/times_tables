@@ -50,11 +50,15 @@ describe "InputPadKey", ->
     @game = new Phaser.Game(800, 600)
 
   it "is an instance of Phaser.Sprite", ->
-    @key = new InputPadKey(@game, 50, 50, 1, false)
+    @key = new InputPadKey(@game, 50, 50, 1)
     expect(@key).toEqual jasmine.any(Phaser.Sprite)
 
-  it "can assign onInputDown callback to itself", ->
-    @key = new InputPadKey(@game, 50, 50, 1, false)
+  it "can return its own #value", ->
+    @key = new InputPadKey(@game, 50, 50, 8)
+    expect(@key.value()).toEqual 8
+
+  it "can #assign onInputDown callback to itself", ->
+    @key = new InputPadKey(@game, 50, 50, 1)
     spyOn(@key.events.onInputDown, 'add').and.stub()
     callback = -> true
     @key.assign callback

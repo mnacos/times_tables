@@ -11,7 +11,7 @@ class State
   create: ->
     @game.stage.backgroundColor = '#ffff00'
     @inputPad = new InputPad(this, 100, 100)
-    @inputPad.assignAll -> console.log 'clicked'
+    @inputPad.assignAll (button) -> console.log button.value()
 
   update: ->
 
