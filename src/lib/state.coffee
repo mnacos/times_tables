@@ -1,5 +1,6 @@
 config = require './config.coffee'
 InputPad = require './inputPad.coffee'
+QuestionsSet = require './questionsSet.coffee'
 
 class State
 
@@ -12,6 +13,7 @@ class State
     @game.stage.backgroundColor = '#f0f0f0'
     @inputPad = new InputPad(this, 100, 100)
     @inputPad.assignAll (button) -> console.log button.value()
+    @questions = new QuestionsSet()
 
   update: ->
 

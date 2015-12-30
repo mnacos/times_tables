@@ -16,6 +16,7 @@ module.exports = (grunt)->
           'build/main.js': 'src/main.coffee'
           'build/spec/jasmine_spec.js': 'spec/jasmine_spec.coffee'
           'build/spec/inputPad_spec.js': 'spec/inputPad_spec.coffee'
+          'build/spec/questionsSet_spec.js': 'spec/questionsSet_spec.coffee'
         options:
           transform: ['coffeeify']
 
