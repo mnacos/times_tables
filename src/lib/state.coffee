@@ -44,8 +44,8 @@ class State
     @question_text.destroy() if @question_text
     @current_q = @questions.choose()
     @buffer = new RespondingBuffer(@current_q.answer())
-    style = {font: '72px Arial', fill: '#000000', align: 'center'}
-    @question_text = @game.add.text 108, 10, "#{@current_q.question()} ?", style
+    style = {font: '55px Arial', fill: '#000000', align: 'center'}
+    @question_text = @game.add.text 108, 16, "#{@current_q.question()}=", style
 
   flashBackground: (col) ->
     @game.stage.backgroundColor = col
