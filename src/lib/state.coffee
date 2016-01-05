@@ -12,7 +12,20 @@ class State
 
   create: ->
     @questions = new QuestionsSet()
-    @questions.populate(['6x8', '7x8', '8x8'], ['48', '56', '64'])
+    @questions.populate(
+      [
+         '1x6',  '2x6',  '3x6',
+         '4x6',  '5x6',  '6x6',
+         '7x6',  '8x6',  '9x6',
+        '10x6', '11x6', '12x6'
+      ],
+      [
+           '6',   '12',   '18',
+          '24',   '30',   '36',
+          '42',   '48',   '54',
+          '60',   '66',   '72'
+      ]
+    )
     @nextQuestion()
     @game.stage.backgroundColor = '#f0f0f0'
     @inputPad = new InputPad(this, 100, 100)
@@ -29,8 +42,8 @@ class State
     @question_text.destroy() if @question_text
     @current_q = @questions.choose()
     @buffer = new RespondingBuffer(@current_q.answer())
-    style = {font: '65px Arial', fill: '#ff0044', align: 'center'}
-    @question_text = @game.add.text @game.world.centerX, @game.world.centerY, @current_q.question(), style
+    style = {font: '72px Arial', fill: '#000000', align: 'center'}
+    @question_text = @game.add.text 108, 10, "#{@current_q.question()} ?", style
 
   update: ->
 
