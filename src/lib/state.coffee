@@ -33,8 +33,10 @@ class State
 
   inputHandler: (button) =>
     @buffer.add button.value(), =>
+      @flashBackground '#00ff00'
       @nextQuestion()
     , =>
+      @flashBackground '#ff0000'
       @nextQuestion()
     # FIXME: use Question #try to keep stats on number of failed attempts
 
@@ -44,6 +46,11 @@ class State
     @buffer = new RespondingBuffer(@current_q.answer())
     style = {font: '72px Arial', fill: '#000000', align: 'center'}
     @question_text = @game.add.text 108, 10, "#{@current_q.question()} ?", style
+
+  flashBackground: (col) ->
+    @game.stage.backgroundColor = col
+    @game.time.events.add 150, =>
+      @game.stage.backgroundColor = '#f0f0f0'
 
   update: ->
 
