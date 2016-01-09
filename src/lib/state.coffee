@@ -45,10 +45,10 @@ class State
     @answer_text.destroy() if @answer_text
     @current_q = @questions.choose()
     @buffer = new RespondingBuffer(@current_q.answer())
-    style = {font: '55px Arial', fill: '#222222', align: 'center'}
+    style = {font: '55px Arial', fill: '#111111', align: 'center'}
     @question_text = new FixedWidthText(@game, 164, 4, 140, @current_q.question(), style)
     @game.add.existing @question_text
-    style = {font: '55px Arial', fill: '#222222', align: 'center'}
+    style = {font: '55px Arial', fill: '#111111', align: 'center'}
     @answer_text = new FixedHeightCenteredText(@game, 164+Math.ceil(@question_text.width/2.0), Math.ceil(@question_text.height*0.618), Math.ceil((@question_text.width+@question_text.height)*0.39*1.618), ' ', style)
     @game.add.existing @answer_text
 
