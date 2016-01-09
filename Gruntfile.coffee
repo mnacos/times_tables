@@ -18,7 +18,6 @@ module.exports = (grunt)->
           'build/spec/inputPad_spec.js': 'spec/inputPad_spec.coffee'
           'build/spec/questionsSet_spec.js': 'spec/questionsSet_spec.coffee'
           'build/spec/respondingBuffer_spec.js': 'spec/respondingBuffer_spec.coffee'
-          'build/spec/fixedWidthText_spec.js': 'spec/fixedWidthText_spec.coffee'
         options:
           transform: ['coffeeify']
 
