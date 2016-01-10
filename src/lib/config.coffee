@@ -1,5 +1,5 @@
 module.exports =
-  width: 800
+  width: 480
   height: 600
 
   stage:
